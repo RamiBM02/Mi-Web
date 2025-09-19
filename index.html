@@ -5,7 +5,7 @@
 <title>Generador de Descripciones de Productos</title>
 <style>
   body {
-    font-family: 'Arial', sans-serif;
+    font-family: Arial, sans-serif;
     margin: 0;
     background: linear-gradient(to right, #f0f4f8, #d9e2ec);
     color: #333;
@@ -108,7 +108,7 @@
   </div>
 
   <h2>Rellena tu pedido</h2>
-  <form id="productForm">
+  <form id="productForm" onsubmit="sendWebhook(event)">
     <label>Nombre del producto:
       <input type="text" id="name" placeholder="Ej: Zapatillas impermeables" required>
     </label>
@@ -145,11 +145,24 @@
 </footer>
 
 <script>
-document.getElementById("productForm").addEventListener("submit", function(e){
-  e.preventDefault();
-  document.getElementById("mensaje").textContent = 
-    "Gracias por rellenar el formulario. Haz clic en el botón de PayPal para pagar y recibir tu descripción en tu email.";
-});
+function sendWebhook(event){
+  event.preventDefault();
+  const data = {
+    name: document.getElementById("name").value,
+    features: document.getElementById("features").value,
+    audience: document.getElementById("audience").value,
+    details: document.getElementById("details").value,
+    email: document.getElementById("email").value
+  };
+  fetch("TU_WEBHOOK_DE_MAKE", {
+    method: "POST",
+    headers: {"Content-Type": "application/json"},
+    body: JSON.stringify(data)
+  }).then(()=>{
+    document.getElementById("mensaje").textContent = 
+      "Formulario enviado. Ahora pulsa el botón de PayPal para pagar y recibir tu descripción por email.";
+  }).catch(err => console.error(err));
+}
 </script>
 
 </body>
