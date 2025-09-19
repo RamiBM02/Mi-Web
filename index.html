@@ -1,81 +1,113 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <title>Generador de Descripciones con IA</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      background: linear-gradient(to right, #f0f4f8, #d9e2ec);
-      margin: 0;
-      padding: 0;
-    }
-    header {
-      background-color: #3b82f6;
-      color: white;
-      padding: 20px;
-      text-align: center;
-    }
-    h1, h2 {
-      margin: 0;
-    }
-    main {
-      max-width: 700px;
-      margin: 30px auto;
-      background-color: white;
-      padding: 30px;
-      border-radius: 12px;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-    }
-    form label {
-      display: block;
-      margin-bottom: 10px;
-      font-weight: bold;
-    }
-    input[type="text"], input[type="email"] {
-      width: 100%;
-      padding: 10px;
-      margin-top: 5px;
-      margin-bottom: 15px;
-      border-radius: 6px;
-      border: 1px solid #ccc;
-      box-sizing: border-box;
-    }
-    button {
-      background-color: #3b82f6;
-      color: white;
-      border: none;
-      padding: 12px 20px;
-      border-radius: 8px;
-      cursor: pointer;
-      font-size: 16px;
-    }
-    button:hover {
-      background-color: #2563eb;
-    }
-    #mensaje {
-      margin-top: 15px;
-      font-weight: bold;
-      color: green;
-    }
-    footer {
-      text-align: center;
-      margin-top: 40px;
-      padding: 20px;
-      font-size: 14px;
-      color: #555;
-    }
-  </style>
+<meta charset="UTF-8">
+<title>Generador de Descripciones de Productos</title>
+<style>
+  body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    background: linear-gradient(to right, #f0f4f8, #d9e2ec);
+    color: #333;
+  }
+  header {
+    background-color: #3b82f6;
+    color: white;
+    padding: 30px 20px;
+    text-align: center;
+  }
+  header h1 {
+    margin: 0;
+    font-size: 2em;
+  }
+  header p {
+    margin: 5px 0 0 0;
+    font-size: 1.1em;
+  }
+  main {
+    max-width: 750px;
+    margin: 30px auto;
+    background-color: white;
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  }
+  h2 {
+    color: #1e40af;
+    margin-bottom: 20px;
+  }
+  form label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+  }
+  input, select, textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+  }
+  textarea {
+    resize: vertical;
+  }
+  button {
+    background-color: #3b82f6;
+    color: white;
+    border: none;
+    padding: 14px 25px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-top: 10px;
+  }
+  button:hover {
+    background-color: #2563eb;
+  }
+  #mensaje {
+    margin-top: 20px;
+    font-weight: bold;
+    color: green;
+  }
+  .example {
+    background-color: #eef2ff;
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 30px;
+    font-style: italic;
+  }
+  footer {
+    text-align: center;
+    margin-top: 40px;
+    padding: 20px;
+    font-size: 14px;
+    color: #555;
+  }
+</style>
 </head>
 <body>
 
 <header>
   <h1>Generador de Descripciones con IA</h1>
-  <p>Rellena el formulario y recibe tu descripción de producto</p>
+  <p>Convierte tus productos en textos irresistibles para vender online</p>
 </header>
 
 <main>
-  <h2>Formulario de pedido</h2>
+  <h2>Ejemplo de descripción generada</h2>
+  <div class="example">
+    <strong>Producto:</strong> Zapatillas impermeables para correr<br>
+    <strong>Descripción corta:</strong> Zapatillas ligeras, resistentes y 100% impermeables, ideales para correr bajo cualquier clima.<br>
+    <strong>Beneficios:</strong>
+    <ul>
+      <li>Resistentes al agua y al desgaste</li>
+      <li>Diseño ergonómico para máxima comodidad</li>
+      <li>Ligeras y transpirables</li>
+      <li>Aptas para todo tipo de terreno</li>
+    </ul>
+  </div>
+
+  <h2>Rellena tu pedido</h2>
   <form id="productForm">
     <label>Nombre del producto:
       <input type="text" id="name" placeholder="Ej: Zapatillas impermeables" required>
@@ -85,11 +117,19 @@
       <input type="text" id="features" placeholder="Ej: ligera, resistente, negra" required>
     </label>
 
+    <label>Público objetivo:
+      <input type="text" id="audience" placeholder="Ej: corredores, deportistas" required>
+    </label>
+
+    <label>Color / Tamaño / Otros detalles:
+      <input type="text" id="details" placeholder="Ej: negro, talla 42" required>
+    </label>
+
     <label>Email para recibir la descripción:
       <input type="email" id="email" placeholder="ejemplo@correo.com" required>
     </label>
 
-    <button type="submit">Generar y pagar</button>
+    <button type="submit">Confirmar datos y pasar al pago</button>
   </form>
 
   <p id="mensaje"></p>
@@ -101,7 +141,7 @@
 </main>
 
 <footer>
-  © 2025 Tu Nombre. Todos los derechos reservados.
+  © 2025 RamiBM02. Todos los derechos reservados.
 </footer>
 
 <script>
