@@ -1,16 +1,116 @@
-<!doctype html>
-<html>
+<!DOCTYPE html>
+<html lang="es">
 <head>
-  <meta charset="utf-8">
-  <title>Mi primera web</title>
+  <meta charset="UTF-8">
+  <title>Generador de Descripciones con IA</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: linear-gradient(to right, #f0f4f8, #d9e2ec);
+      margin: 0;
+      padding: 0;
+    }
+    header {
+      background-color: #3b82f6;
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+    h1, h2 {
+      margin: 0;
+    }
+    main {
+      max-width: 700px;
+      margin: 30px auto;
+      background-color: white;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    }
+    form label {
+      display: block;
+      margin-bottom: 10px;
+      font-weight: bold;
+    }
+    input[type="text"], input[type="email"] {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      margin-bottom: 15px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+      box-sizing: border-box;
+    }
+    button {
+      background-color: #3b82f6;
+      color: white;
+      border: none;
+      padding: 12px 20px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+    button:hover {
+      background-color: #2563eb;
+    }
+    #mensaje {
+      margin-top: 15px;
+      font-weight: bold;
+      color: green;
+    }
+    footer {
+      text-align: center;
+      margin-top: 40px;
+      padding: 20px;
+      font-size: 14px;
+      color: #555;
+    }
+  </style>
 </head>
 <body>
-  <h1>Bienvenido a mi página</h1>
-  <p>Aquí ofrezco descripciones con IA para tus productos.</p>
 
-  <!-- Botón de pago de PayPal -->
-  <a href="https://paypal.me/TUUSUARIO/10" target="_blank">
+<header>
+  <h1>Generador de Descripciones con IA</h1>
+  <p>Rellena el formulario y recibe tu descripción de producto</p>
+</header>
+
+<main>
+  <h2>Formulario de pedido</h2>
+  <form id="productForm">
+    <label>Nombre del producto:
+      <input type="text" id="name" placeholder="Ej: Zapatillas impermeables" required>
+    </label>
+
+    <label>Características (separadas por comas):
+      <input type="text" id="features" placeholder="Ej: ligera, resistente, negra" required>
+    </label>
+
+    <label>Email para recibir la descripción:
+      <input type="email" id="email" placeholder="ejemplo@correo.com" required>
+    </label>
+
+    <button type="submit">Generar y pagar</button>
+  </form>
+
+  <p id="mensaje"></p>
+
+  <h2>Pagar antes de recibir tu descripción</h2>
+  <a id="paypalButton" href="https://paypal.me/RamiBM02/10" target="_blank">
     <button>Pagar 10€ con PayPal</button>
   </a>
+</main>
+
+<footer>
+  © 2025 Tu Nombre. Todos los derechos reservados.
+</footer>
+
+<script>
+document.getElementById("productForm").addEventListener("submit", function(e){
+  e.preventDefault();
+  document.getElementById("mensaje").textContent = 
+    "Gracias por rellenar el formulario. Haz clic en el botón de PayPal para pagar y recibir tu descripción en tu email.";
+});
+</script>
+
 </body>
 </html>
